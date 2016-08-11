@@ -12,7 +12,7 @@ The "Lepton#_flavor" attribute is an integer that is either 1 or 2. A lepton wit
 
 To create the CMSSW environment on an lxplus server, use the following commands:
 
-'''
+```
 export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
 source $VO_CMS_SW_DIR/cmsset_default.sh
 
@@ -20,6 +20,6 @@ scramv1 list CMSSW
 scramv1 project CMSSW CMSSW_5_3_32
 cd CMSSW_5_3_32
 cmsenv
-'''
+```
 
 Hopefully this will be useful in extracting data from future four lepton files and making them usable documents for Jupyter notebooks and other projects.

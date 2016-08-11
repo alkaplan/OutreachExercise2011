@@ -1,6 +1,6 @@
 # Fork of CMS Outreach excercise from 2011
 
-See the original readme [here][https://github.com/katilp/OutreachExercise2011]
+See the original readme [here](https://github.com/katilp/OutreachExercise2011)
 
 This repository contains two examples:
 

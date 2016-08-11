@@ -19,10 +19,11 @@
 
 from DataFormats.FWLite import Events, Handle
 from OutreachExercise2011.DecaysToLeptons import rootnotes
+from ROOT import TFile, TTree
 import ROOT
 import os
-import json
 import time
+import array
 
 def getFullPath(path):
     return os.path.join(os.environ['CMSSW_BASE'],
@@ -96,6 +97,97 @@ class Analyzer (object):
         for sample in self.samples:
             self.histograms[sample] = {}
         self.data = []
+        
+        self.fileOut = TFile('output.root','recreate')
+        self.t = TTree('t1','FourLepton')
+        
+        self.Lepton1_energy = array.array('f',[0])
+        self.Lepton1_charge = array.array('f',[0])
+        #self.Lepton1_global = array.array('i',[0])
+        self.Lepton1_pt     = array.array('f',[0])
+        self.Lepton1_px     = array.array('f',[0])
+        self.Lepton1_py     = array.array('f',[0])
+        self.Lepton1_pz     = array.array('f',[0])
+        self.Lepton1_phi    = array.array('f',[0])
+        self.Lepton1_eta    = array.array('f',[0])
+        self.Lepton1_flavor = array.array('i',[0])
+        
+        self.Lepton2_energy = array.array('f',[0])
+        self.Lepton2_charge = array.array('f',[0])
+        #self.Lepton2_global = array.array('i',[0])
+        self.Lepton2_pt     = array.array('f',[0])
+        self.Lepton2_px     = array.array('f',[0])
+        self.Lepton2_py     = array.array('f',[0])
+        self.Lepton2_pz     = array.array('f',[0])
+        self.Lepton2_phi    = array.array('f',[0])
+        self.Lepton2_eta    = array.array('f',[0])
+        self.Lepton2_flavor = array.array('i',[0])
+        
+        self.Lepton3_energy = array.array('f',[0])
+        self.Lepton3_charge = array.array('f',[0])
+        #self.Lepton3_global = array.array('i',[0])
+        self.Lepton3_pt     = array.array('f',[0])
+        self.Lepton3_px     = array.array('f',[0])
+        self.Lepton3_py     = array.array('f',[0])
+        self.Lepton3_pz     = array.array('f',[0])
+        self.Lepton3_phi    = array.array('f',[0])
+        self.Lepton3_eta    = array.array('f',[0])
+        self.Lepton3_flavor = array.array('i',[0])
+        
+        self.Lepton4_energy = array.array('f',[0])
+        self.Lepton4_charge = array.array('f',[0])
+        #self.Lepton4_global = array.array('i',[0])
+        self.Lepton4_pt     = array.array('f',[0])
+        self.Lepton4_px     = array.array('f',[0])
+        self.Lepton4_py     = array.array('f',[0])
+        self.Lepton4_pz     = array.array('f',[0])
+        self.Lepton4_phi    = array.array('f',[0])
+        self.Lepton4_eta    = array.array('f',[0])
+        self.Lepton4_flavor = array.array('i',[0])
+        
+        self.t.Branch('Lepton1_energy', self.Lepton1_energy, 'Lepton1_energy/F')
+        self.t.Branch('Lepton1_charge', self.Lepton1_charge, 'Lepton1_charge/F')
+        #self.t.Branch('Lepton1_global', self.Lepton1_global, 'Lepton1_global/F')
+        self.t.Branch('Lepton1_pt',     self.Lepton1_pt,     'Lepton1_pt/F')
+        self.t.Branch('Lepton1_px',     self.Lepton1_px,     'Lepton1_px/F')
+        self.t.Branch('Lepton1_py',     self.Lepton1_py,     'Lepton1_py/F')
+        self.t.Branch('Lepton1_pz',     self.Lepton1_pz,     'Lepton1_pz/F')
+        self.t.Branch('Lepton1_phi',    self.Lepton1_phi,    'Lepton1_phi/F')
+        self.t.Branch('Lepton1_eta',    self.Lepton1_eta,    'Lepton1_eta/F')
+        self.t.Branch('Lepton1_flavor', self.Lepton1_flavor, 'Lepton1_flavor/I')
+        
+        self.t.Branch('Lepton2_energy', self.Lepton2_energy, 'Lepton2_energy/F')
+        self.t.Branch('Lepton2_charge', self.Lepton2_charge, 'Lepton2_charge/F')
+        #self.t.Branch('Lepton2_global', self.Lepton2_global, 'Lepton2_global/F')
+        self.t.Branch('Lepton2_pt',     self.Lepton2_pt,     'Lepton2_pt/F')
+        self.t.Branch('Lepton2_px',     self.Lepton2_px,     'Lepton2_px/F')
+        self.t.Branch('Lepton2_py',     self.Lepton2_py,     'Lepton2_py/F')
+        self.t.Branch('Lepton2_pz',     self.Lepton2_pz,     'Lepton2_pz/F')
+        self.t.Branch('Lepton2_phi',    self.Lepton2_phi,    'Lepton2_phi/F')
+        self.t.Branch('Lepton2_eta',    self.Lepton2_eta,    'Lepton2_eta/F')
+        self.t.Branch('Lepton2_flavor', self.Lepton2_flavor, 'Lepton2_flavor/I')
+        
+        self.t.Branch('Lepton3_energy', self.Lepton3_energy, 'Lepton3_energy/F')
+        self.t.Branch('Lepton3_charge', self.Lepton3_charge, 'Lepton3_charge/F')
+        #self.t.Branch('Lepton3_global', self.Lepton3_global, 'Lepton3_global/F')
+        self.t.Branch('Lepton3_pt',     self.Lepton3_pt,     'Lepton3_pt/F')
+        self.t.Branch('Lepton3_px',     self.Lepton3_px,     'Lepton3_px/F')
+        self.t.Branch('Lepton3_py',     self.Lepton3_py,     'Lepton3_py/F')
+        self.t.Branch('Lepton3_pz',     self.Lepton3_pz,     'Lepton3_pz/F')
+        self.t.Branch('Lepton3_phi',    self.Lepton3_phi,    'Lepton3_phi/F')
+        self.t.Branch('Lepton3_eta',    self.Lepton3_eta,    'Lepton3_eta/F')
+        self.t.Branch('Lepton3_flavor', self.Lepton3_flavor, 'Lepton3_flavor/I')
+        
+        self.t.Branch('Lepton4_energy', self.Lepton4_energy, 'Lepton4_energy/F')
+        self.t.Branch('Lepton4_charge', self.Lepton4_charge, 'Lepton4_charge/F')
+        #self.t.Branch('Lepton4_global', self.Lepton4_global, 'Lepton4_global/F')
+        self.t.Branch('Lepton4_pt',     self.Lepton4_pt,     'Lepton4_pt/F')
+        self.t.Branch('Lepton4_px',     self.Lepton4_px,     'Lepton4_px/F')
+        self.t.Branch('Lepton4_py',     self.Lepton4_py,     'Lepton4_py/F')
+        self.t.Branch('Lepton4_pz',     self.Lepton4_pz,     'Lepton4_pz/F')
+        self.t.Branch('Lepton4_phi',    self.Lepton4_phi,    'Lepton4_phi/F')
+        self.t.Branch('Lepton4_eta',    self.Lepton4_eta,    'Lepton4_eta/F')
+        self.t.Branch('Lepton4_flavor', self.Lepton4_flavor, 'Lepton4_flavor/I')
 
     def muonID(self, muon, vertex):
         """
@@ -149,10 +241,8 @@ class Analyzer (object):
                 continue
 
     def exportData(self):
-        f = open('data.json', 'w')
-        info = {'data': self.data}
-        json.dump(info, f)
-        f.close()
+        self.fileOut.Write()
+        self.fileOut.Close()
 
     def analyze(self, box):
         return True
@@ -183,7 +273,15 @@ class Analyzer (object):
         events = Events(sample.files)
         print "%s events available for processing" % events.size()
         ts = time.time() 
+        
+        
         for N, event in enumerate(events):
+            if N < 28451:
+               continue
+            if N > 28453 and N < 127159:
+				continue
+            if N > 127160 and N < 160330:
+				continue
             if maxEv >= 0 and (N + 1) >= maxEv:
                break
             if N % 1000000 == 0:
@@ -192,10 +290,12 @@ class Analyzer (object):
             weight = 1
             box = EventBox()
             self.readCollections(event, box)
-            if not self.analyze(box):
+            if self.analyze(box) == False:
                 continue
-            self.addEvent(box)
-            self.fillHistos(box, sample.type, weight)
+            #self.addEvent(box)
+            t3 = time.time()
+            print "Found one at %s after %s seconds!" % (N, t3 - ts)
+            #self.fillHistos(box, sample.type, weight)
         tf = time.time()
         print "%s events processed in %s seconds" % (N + 1, tf - ts)
 

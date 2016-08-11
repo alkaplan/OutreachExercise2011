@@ -18,9 +18,12 @@
 ## along with CMSOutreachExercise2011. If not, see <http://www.gnu.org/licenses/>.
 
 import itertools
+import pprint
+import array
 
+from ROOT import *
 from OutreachExercise2011.DecaysToLeptons.Analyzer import Analyzer, Object
-
+from DataFormats.FWLite import Events, Handle
 
 class FourLeptonAnalyzer(Analyzer):
     """
@@ -209,7 +212,8 @@ class FourLeptonAnalyzer(Analyzer):
 
     #####ANALYSIS######
     def analyze(self, box):
-
+        
+        #print "I am working!"
         #####START FROM A bOX CONTAINING SELECTED MUONS AND ELECTRONS and MAKE
         #####FOUR LEPTON CANDIDATES
 
@@ -228,6 +232,9 @@ class FourLeptonAnalyzer(Analyzer):
         sortedZs = sorted(box.zcandidates,
                           key=lambda x: abs(x.mass() - 91.118))
         box.Z1 = sortedZs[0]
+        
+        savedLeptons = [box.Z1.l1, box.Z1.l2]
+        #print savedLeptons
 
         # now remove the used leptons from the list and make Z2 pairs
         box.leptons.remove(box.Z1.l1)
@@ -243,6 +250,11 @@ class FourLeptonAnalyzer(Analyzer):
         sortedZ2s = sorted(box.zcandidates2,
                            key=lambda x: x.l1.pt() + x.l2.pt(), reverse=True)
         box.Z2 = sortedZ2s[0]
+        
+        savedLeptons.append(box.Z2.l1)
+        savedLeptons.append(box.Z2.l2)
+        
+        self.addLeptonData(savedLeptons)
 
         # kill the candidate if a OS pair has mll<4 GeV
         for l1, l2 in itertools.combinations([box.Z1.l1, box.Z1.l2,
@@ -273,3 +285,72 @@ class FourLeptonAnalyzer(Analyzer):
 
     def addEvent(self, box):
         self.data.append(box.ZZ.mass())
+        #print 'working'
+        #self.eventData.append(box)
+        
+    def addLeptonData(self, leptons):
+    	l1 = leptons[0]
+    	l2 = leptons[1]
+    	l3 = leptons[2]
+    	l4 = leptons[3]
+    	    	
+    	#lepton flavor declaration: if 1, it's a muon, if 2, it's an electron
+    	for N, lept in enumerate(leptons):
+			name = str(type(lept))[59:-2]
+			if name == 'Electron':
+				leptons[N].flavor = 2
+			elif name == 'Muon':
+				leptons[N].flavor = 1
+				
+    	
+    	
+    	self.Lepton1_energy[0] = l1.energy()
+    	self.Lepton1_charge[0] = l1.charge()
+       #self.Lepton1_global[0] = l1.isglobal()
+    	self.Lepton1_pt[0]     = l1.pt()
+    	self.Lepton1_px[0]     = l1.px()
+    	self.Lepton1_py[0]     = l1.py()
+    	self.Lepton1_pz[0]     = l1.pz()
+    	self.Lepton1_phi[0]    = l1.phi()
+    	self.Lepton1_eta[0]    = l1.eta()
+    	self.Lepton1_flavor[0] = l1.flavor
+    	
+    	self.Lepton2_energy[0] = l2.energy()
+    	self.Lepton2_charge[0] = l2.charge()
+       #self.Lepton2_global[0] = l2.isglobal()
+    	self.Lepton2_pt[0]     = l2.pt()
+    	self.Lepton2_px[0]     = l2.px()
+    	self.Lepton2_py[0]     = l2.py()
+    	self.Lepton2_pz[0]     = l2.pz()
+    	self.Lepton2_phi[0]    = l2.phi()
+    	self.Lepton2_eta[0]    = l2.eta()
+    	self.Lepton2_flavor[0] = l2.flavor
+    	
+    	self.Lepton3_energy[0] = l3.energy()
+    	self.Lepton3_charge[0] = l3.charge()
+       #self.Lepton3_global[0] = l3.isglobal()
+    	self.Lepton3_pt[0]     = l3.pt()
+    	self.Lepton3_px[0]     = l3.px()
+    	self.Lepton3_py[0]     = l3.py()
+    	self.Lepton3_pz[0]     = l3.pz()
+    	self.Lepton3_phi[0]    = l3.phi()
+    	self.Lepton3_eta[0]    = l3.eta()
+    	self.Lepton3_flavor[0] = l3.flavor
+    	
+    	self.Lepton4_energy[0] = l4.energy()
+    	self.Lepton4_charge[0] = l4.charge()
+       #self.Lepton4_global[0] = l4.isglobal()
+    	self.Lepton4_pt[0]     = l4.pt()
+    	self.Lepton4_px[0]     = l4.px()
+    	self.Lepton4_py[0]     = l4.py()
+    	self.Lepton4_pz[0]     = l4.pz()
+    	self.Lepton4_phi[0]    = l4.phi()
+    	self.Lepton4_eta[0]    = l4.eta()
+    	self.Lepton4_flavor[0] = l4.flavor
+    	
+    	self.t.Fill()
+    	
+    	
+
+
+    	#self.eventData.append(event) '''

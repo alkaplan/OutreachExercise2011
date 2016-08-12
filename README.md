@@ -47,10 +47,7 @@ Currently the `sources.py` file includes sources from [data set 231](http://open
 
 Relevant links included in the last paragraph:
 
-Data set 230: http://opendata.cern.ch/record/231
-Data set 231: http://opendata.cern.ch/record/230
-230 files address: http://opendata.cern.ch/record/230/files/CMS_Run2011A_DoubleMu_PATtuples_file_index.txt
-231 files address: http://opendata.cern.ch/record/231/files/CMS_Run2011A_DoubleElectron_PATtuples_file_index.txt
+Data set 230: http://opendata.cern.ch/record/231 <br>Data set 231: http://opendata.cern.ch/record/230<br>230 files address: http://opendata.cern.ch/record/230/files/CMS_Run2011A_DoubleMu_PATtuples_file_index.txt<br>231 files address: http://opendata.cern.ch/record/231/files/CMS_Run2011A_DoubleElectron_PATtuples_file_index.txt
 
 
 Hopefully this will be useful in extracting data from future four lepton files and making them usable documents for Jupyter notebooks and other projects.

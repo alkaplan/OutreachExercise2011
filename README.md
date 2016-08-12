@@ -36,6 +36,13 @@ cd src/OutreachExercise2011/DecaysToLeptons/run/
 ipython run.py
 ```
 
-Currently the `sources.py` file includes sources from [data set 231](http://opendata.cern.ch/record/231), however you can also add files from [data set 230](http://opendata.cern.ch/record/230) and simply add them to the file in the same format. 
+Currently the `sources.py` file includes sources from [data set 231](http://opendata.cern.ch/record/231), however you can also add files from [data set 230](http://opendata.cern.ch/record/230) and simply add them to the file in the same format. The addresses of the relevant files are listed in the "index.txt" file, which can be found [here](http://opendata.cern.ch/record/230/files/CMS_Run2011A_DoubleMu_PATtuples_file_index.txt) for data set 230, and [here](http://opendata.cern.ch/record/231/files/CMS_Run2011A_DoubleElectron_PATtuples_file_index.txt) for data set 231.
+
+Relevant links included in the last paragraph:
+
+Data set 230: http://opendata.cern.ch/record/231
+Data set 231: http://opendata.cern.ch/record/230
+230 files address: http://opendata.cern.ch/record/230/files/CMS_Run2011A_DoubleMu_PATtuples_file_index.txt
+231 files address: http://opendata.cern.ch/record/231/files/CMS_Run2011A_DoubleElectron_PATtuples_file_index.txt
 
 Hopefully this will be useful in extracting data from future four lepton files and making them usable documents for Jupyter notebooks and other projects.

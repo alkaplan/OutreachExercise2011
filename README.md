@@ -18,8 +18,22 @@ source $VO_CMS_SW_DIR/cmsset_default.sh
 
 scramv1 list CMSSW
 scramv1 project CMSSW CMSSW_5_3_32
+```
+
+On all CMSSW devices, before running this program you must run the following commands:
+
+```
 cd CMSSW_5_3_32
 cmsenv
+```
+
+After you've successfully created the environment, to run the analyzer:
+
+```
+git clone https://github.com/alkaplan/OutreachExercise2011
+scram b
+cd src/OutreachExercise2011/DecaysToLeptons/run/
+ipython run.py
 ```
 
 Hopefully this will be useful in extracting data from future four lepton files and making them usable documents for Jupyter notebooks and other projects.

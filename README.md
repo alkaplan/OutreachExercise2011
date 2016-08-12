@@ -36,4 +36,6 @@ cd src/OutreachExercise2011/DecaysToLeptons/run/
 ipython run.py
 ```
 
+Currently the `sources.py` file includes sources from [data set 231](http://opendata.cern.ch/record/231), however you can also add files from [data set 230](http://opendata.cern.ch/record/230) and simply add them to the file in the same format. 
+
 Hopefully this will be useful in extracting data from future four lepton files and making them usable documents for Jupyter notebooks and other projects.

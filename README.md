@@ -48,11 +48,8 @@ Currently the `sources.py` file includes sources from [data set 231](http://open
 Relevant links included in the last paragraph:
 
 Data set 230: http://opendata.cern.ch/record/231
-
 Data set 231: http://opendata.cern.ch/record/230
-
 230 files address: http://opendata.cern.ch/record/230/files/CMS_Run2011A_DoubleMu_PATtuples_file_index.txt
-
 231 files address: http://opendata.cern.ch/record/231/files/CMS_Run2011A_DoubleElectron_PATtuples_file_index.txt
 
 

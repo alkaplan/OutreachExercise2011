@@ -20,6 +20,12 @@ scramv1 list CMSSW
 scramv1 project CMSSW CMSSW_5_3_32
 ```
 
+On a local CMS device, to create the work area, run the following command:
+
+```
+cmsrel CMSSW_5_3_32
+```
+
 On all CMSSW devices, before running this program you must run the following commands:
 
 ```
@@ -30,6 +36,7 @@ cmsenv
 After you've successfully created the environment, to run the analyzer:
 
 ```
+cd CMSSW_5_3_32/src
 git clone https://github.com/alkaplan/OutreachExercise2011
 scram b
 cd src/OutreachExercise2011/DecaysToLeptons/run/
